@@ -1,0 +1,14 @@
+{
+    "name" : "rest",
+    "version" : "0.1.0",
+    "description" : "service restful",
+    "main" : "app.js",
+    "dependencies" : {
+        "express": "latest",
+        "mongoose": "latest",
+        "socket.io": "latest",
+        "body-parser" : "latest",
+        "cookie-parser": "latest",
+        "method-override" : "latest"
+    }
+}
