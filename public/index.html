@@ -6,20 +6,20 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/foundation.css">
         <link rel="stylesheet" href="css/estilo.css">
-        
+
         <script src="js/vendor/jquery-2.0.3.js"></script>
         <script src="js/vendor/underscore.js"></script>
         <script src="js/vendor/backbone.js"></script>
-        
+
         <script src="js/vendor/socket.io.js"></script>
-        
+
         <script src="js/init.js"></script>
-        
+
         <script src="js/backbone/models/post.js"></script>
         <script src="js/backbone/collections/posts.js"></script>
         <script src="js/backbone/views/post-view.js"></script>
         <script src="js/backbone/views/app.js"></script>
-        
+
         <script src="js/main.js"></script>
     </head>
 
@@ -30,18 +30,21 @@
             <p><input name="contenido" type="text"></p>
              <!--<p><input name="tipo" type="text"></p>-->
              <!--<p><input name="cantidad" type="number"></p>-->
-            <input type="submit">
+            <input type="submit" class="agregar">
          </form>
         <section class="posts">
 
         </section>
- 
+
         <script type="text/template" id="post-template">
             <%= contenido %>
          </script>
         <script type="text/javascript">
-            var websocket = io.connect("http://localhost:3000");
-            
+            $(function(){
+
+
+            });
+
         </script>
     </body>
 </html>
@@ -51,6 +54,6 @@
                 <p><%= like %></p>
                 <p><%= dislike %></p>
                 <button class="eliminar">Eliminar</button>
-                <button class="like">Like</button>   
+                <button class="like">Like</button>
                 <button class="dislike">dislike</button>
             </div>-->

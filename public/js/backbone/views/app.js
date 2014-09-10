@@ -15,17 +15,25 @@ Runnable.Views.App  = Backbone.View.extend({
 		var contenido = $('input[name=contenido]').val();
 		//var like = $('input[name=like]').val();
 		//var dislike = $('input[name=dislike]');
+		if(contenido !== ''){
+			var data = {
+				"contenido" : contenido,
+				//"like"		: like,
+				//"dislike"	: dislike
+			};
 
-		var data = {
-			"contenido" : contenido,
-			//"like"		: like,
-			//"dislike"	: dislike
-		};
+			var  model = new Runnable.Models.Post(data);
+			model.save();
+			//var socket = io.connect();
+			//socket.emit('sendPost',data);
+			//socket.on('newPost',function(data){
+				window.collections.posts.fetch();
+				$('.post').remove();
+			//});
+			this.$el.find('form input[type=text]').val('');
+			this.$el.find('form').slideUp();
+		}
 
-		var  model = new Runnable.Models.Post(data);
-		model.save();
-		this.$el.find('form input[type=text]').val('');
-		this.$el.find('form').slideUp();
 	}
 
 });

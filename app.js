@@ -1,25 +1,26 @@
 var express = require('express'),
     mongoose =  require('mongoose'),
-    io =  require('socket.io');
     bodyParser =  require('body-parser'),
     cookieParser = require('cookie-parser'),
     methodOverride =  require('method-override');
 
 
 var app = express();
+var http = require('http').Server(app);
+var io =  require('socket.io')(http);
+
 var port = process.env.PORT || 3000;
 
-server.sockets.on("connection", function(message){
-    message.on("newMessage", function(data){
-        server.sockets.emit("sendEvent", data);
+//metodos para socket.io
+//evento que se lanza cuando alguien se conecta
+io.on('connection',function(socket){
+    socket.on('sendPost', function(data){
+      io.socket.emit('newPost',{msg:data});
     });
 });
-io.on('connection', function(socket){
-    console.log('a user connected');
-    socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
-});
+//evento que se lanza cuando alguien se desconecta
+
+
 
 //Middlewares
 app.use(bodyParser());
@@ -74,12 +75,12 @@ router.post('')
 //Devuelve todo los posts
 router.get('/posts',function(req,res,next){
     //proceso del get
-    
+
     //res.json({})
 });
 
 router.get('/posts/:id',function(req,res,next){
-    
+
 });*/
 
 app.use('/api',posts);
