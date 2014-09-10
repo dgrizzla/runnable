@@ -1,5 +1,6 @@
 var express = require('express'),
     mongoose =  require('mongoose'),
+    io =  require('socket.io');
     bodyParser =  require('body-parser'),
     cookieParser = require('cookie-parser'),
     methodOverride =  require('method-override');
@@ -7,6 +8,18 @@ var express = require('express'),
 
 var app = express();
 var port = process.env.PORT || 3000;
+
+server.sockets.on("connection", function(message){
+    message.on("newMessage", function(data){
+        server.sockets.emit("sendEvent", data);
+    });
+});
+io.on('connection', function(socket){
+    console.log('a user connected');
+    socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
 
 //Middlewares
 app.use(bodyParser());
@@ -29,6 +42,7 @@ router.get('/',function(req,res){
     res.send('Hola');
 });
 app.use(router);
+
 
 
 var posts = express.Router();

@@ -16,12 +16,41 @@
         <script src="js/init.js"></script>
         
         <script src="js/backbone/models/post.js"></script>
+        <script src="js/backbone/collections/posts.js"></script>
+        <script src="js/backbone/views/post-view.js"></script>
+        <script src="js/backbone/views/app.js"></script>
         
         <script src="js/main.js"></script>
     </head>
 
-     <body>
-         hola tu
-        <script src=""></script>
+    <body>
+         <body>
+         <button class="agregar">Agregar</button>
+         <form action="" style="display:none">
+            <p><input name="contenido" type="text"></p>
+             <!--<p><input name="tipo" type="text"></p>-->
+             <!--<p><input name="cantidad" type="number"></p>-->
+            <input type="submit">
+         </form>
+        <section class="posts">
+
+        </section>
+ 
+        <script type="text/template" id="post-template">
+            <%= contenido %>
+         </script>
+        <script type="text/javascript">
+            var websocket = io.connect("http://localhost:3000");
+            
+        </script>
     </body>
 </html>
+
+ <!--<div class="area">
+                <h2 ><%= contenido %></h2>
+                <p><%= like %></p>
+                <p><%= dislike %></p>
+                <button class="eliminar">Eliminar</button>
+                <button class="like">Like</button>   
+                <button class="dislike">dislike</button>
+            </div>-->
